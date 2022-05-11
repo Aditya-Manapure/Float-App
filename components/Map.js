@@ -5,7 +5,7 @@ import MapView ,{ Callout, Marker } from 'react-native-maps';
 import { useAuth } from '../navigations/AuthContext';
 import * as Location from 'expo-location';
 //import MapViewDirections from 'react-native-maps-directions';
-import MapViewDirections from '../map/MapViewDirections';
+//import MapViewDirections from '../map/MapViewDirections';
 //import { GOOGLE_MAPS_APIKEY, OPEN_ROUTE_SERVICE_APIKEY } from "@env";
 import {Dimensions} from 'react-native';
 //import { set } from 'immer/dist/internal';
@@ -56,14 +56,14 @@ const Map = () => {
             longitudeDelta: LONGITUDE_DELTA,
             }}
       >
-          <MapViewDirections
+          {/*<MapViewDirections
             origin={origin}
             destination={destination}
             apikey={OPEN_ROUTE_SERVICE_APIKEY}
             strokeWidth={3}
             strokeColor="hotpink"
 
-          />
+          />*/}
           <Marker
             coordinate={{ latitude : currLat , longitude : currLng }}
             title = {currentUser.displayName}
