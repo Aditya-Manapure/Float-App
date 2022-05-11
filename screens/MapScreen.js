@@ -270,6 +270,10 @@ const MapScreen = () => {
 
                 />
             </View>
+            <View style={styles.container}>
+                <View style={styles.button} />
+                <View style={styles.button} />
+            </View>
             <View style={tw`h-1/5 bg-white`}>
                 <FlatList
                     data={data}
@@ -294,10 +298,22 @@ const MapScreen = () => {
                     )}
                 />
             </View>
+
         </View>
     );
 };
 
 export default MapScreen;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        flexDirection: 'row',
+        justifyContent: 'space-between'
+    },
+    button: {
+        backgroundColor: 'green',
+        width: '40%',
+        height: 40
+    }
+});

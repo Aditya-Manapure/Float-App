@@ -146,9 +146,14 @@ const ProfileStack = ({ navigation }) => (
       name="AddVehicle"
       component={AddVehicle}
       options={{
+        headerShown: true,
         headerTitle: 'Add Vehicle',
+<<<<<<< HEAD
 >>>>>>> 62ccc8d5fddeca75af26e4b006e3fca85b602ea0
         headerBackTitleVisible: false,
+=======
+        headerBackTitleVisible: true,
+>>>>>>> 3d1786fc58868fe540b57648e357a1339d12ac46
         headerTitleAlign: 'center',
         headerStyle: {
           backgroundColor: '#fff',
