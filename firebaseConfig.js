@@ -5,13 +5,13 @@ import 'firebase/compat/storage';
 
 
 const firebaseApp = firebase.initializeApp({
-    apiKey: "AIzaSyBzcT2RrRpEn6Fr-gGWcmDkfAAra5tqpC0",
-    authDomain: "float-ee7a2.firebaseapp.com",
-    projectId: "float-ee7a2",
-    storageBucket: "float-ee7a2.appspot.com",
-    messagingSenderId: "729421103415",
-    appId: "1:729421103415:web:070124f776454822dc9ab2",
-    measurementId: "G-43MK073Q3W"
+    apiKey: "AIzaSyDybTjL2tUZxYmEI83CEugFbiwP--VFfiQ",
+    authDomain: "float-app-50e6f.firebaseapp.com",
+    projectId: "float-app-50e6f",
+    storageBucket: "float-app-50e6f.appspot.com",
+    messagingSenderId: "558708143753",
+    appId: "1:558708143753:web:732ff0394040ec44a8f858",
+    measurementId: "G-TTR6C4KFEP"
   });
  
 const db = firebaseApp.firestore();
