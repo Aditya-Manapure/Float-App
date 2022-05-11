@@ -1,26 +1,26 @@
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import React, {useState, useEffect} from 'react';
-import MapView ,{ Callout, Marker } from 'react-native-maps';
+import React, { useState, useEffect } from 'react';
+import MapView, { Callout, Marker } from 'react-native-maps';
 import { useAuth } from '../navigations/AuthContext';
 import * as Location from 'expo-location';
 //import MapViewDirections from 'react-native-maps-directions';
-import MapViewDirections from '../map/MapViewDirections';
+// import MapViewDirections from '../map/MapViewDirections';
 //import { GOOGLE_MAPS_APIKEY, OPEN_ROUTE_SERVICE_APIKEY } from "@env";
-import {Dimensions} from 'react-native';
+import { Dimensions } from 'react-native';
 //import { set } from 'immer/dist/internal';
-const { height, width } = Dimensions.get( 'window' ); 
+const { height, width } = Dimensions.get('window');
 
 const Map = () => {
-  const origin = {latitude: 16.847350827401808, longitude:74.59880747474361};
-  const destination = {latitude: 16.845574393214125, longitude: 74.6036139934753};
+  const origin = { latitude: 16.847350827401808, longitude: 74.59880747474361 };
+  const destination = { latitude: 16.845574393214125, longitude: 74.6036139934753 };
   const LATITUDE_DELTA = 0.12;
   const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height)
 
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  
-  const { currentUser } = useAuth(); 
+
+  const { currentUser } = useAuth();
 
   const [currLat, setCurrLat] = useState(16.845839702003307);
   const [currLng, setCurrLng] = useState(74.60094760130845);
@@ -42,37 +42,37 @@ const Map = () => {
     })();
   }, []);
 
-    return (
+  return (
     <View>
-       <MapView
-            style = {{
-              height : '100%',
-              width : '100%'
-            }}
-            initialRegion={{
-            latitude: currLat,
-            longitude: currLng,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA,
-            }}
+      <MapView
+        style={{
+          height: '100%',
+          width: '100%'
+        }}
+        initialRegion={{
+          latitude: currLat,
+          longitude: currLng,
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        }}
       >
-          <MapViewDirections
+        {/* <MapViewDirections
             origin={origin}
             destination={destination}
             apikey={OPEN_ROUTE_SERVICE_APIKEY}
             strokeWidth={3}
             strokeColor="hotpink"
 
+          /> */}
+        <Marker
+          coordinate={{ latitude: currLat, longitude: currLng }}
+          title={currentUser.displayName}
+        >
+          <Image
+            style={styles.mapUserImg}
+            source={{ uri: currentUser ? currentUser.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' }}
           />
-          <Marker
-            coordinate={{ latitude : currLat , longitude : currLng }}
-            title = {currentUser.displayName}
-          >
-            <Image 
-              style = {styles.mapUserImg}
-              source = {{uri : currentUser ? currentUser.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
-            />
-            {/*<Callout tooltip>
+          {/*<Callout tooltip>
               <View>
                 <View style={styles.bubble}>
                   <Text style={styles.name}>{currentUser.displayName}</Text>
@@ -82,9 +82,9 @@ const Map = () => {
                 <View style ={styles.arrow} />
               </View>
             </Callout>*/}
-          </Marker>    
+        </Marker>
       </MapView>
-    
+
     </View>
   );
 };
@@ -92,10 +92,10 @@ const Map = () => {
 export default Map;
 
 const styles = StyleSheet.create({
-  mapUserImg : {
-    width : 30,
-    height : 30,
-    borderRadius : 20
+  mapUserImg: {
+    width: 30,
+    height: 30,
+    borderRadius: 20
   },
   bubble: {
     flexDirection: 'column',

@@ -6,12 +6,6 @@ import MapView from 'react-native-maps';
 import { FlatList, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 const MapScreen = () => {
-
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 87c68a1265ab8b1ec5168dadd1651e335ea886e8
     /*var openrouteservice = require("openrouteservice-js");
     var Directions = new openrouteservice.Directions({ api_key: "5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559"});
 
@@ -40,11 +34,6 @@ const MapScreen = () => {
         });
     },[])
     console.log(PolyLines);*/
-
-<<<<<<< HEAD
-
-
-=======
     /*let request = new XMLHttpRequest();
 
     request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
@@ -71,7 +60,6 @@ const MapScreen = () => {
     request.send(body);
     console.log("JSON_OBJECT-----------------------------");
     console.log(jsonObject);*/
->>>>>>> 87c68a1265ab8b1ec5168dadd1651e335ea886e8
 
 
 
