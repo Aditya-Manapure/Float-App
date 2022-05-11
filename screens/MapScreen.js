@@ -8,7 +8,7 @@ import { Icon } from 'react-native-elements';
 const MapScreen = () => {
 
   
-    var openrouteservice = require("openrouteservice-js");
+    /*var openrouteservice = require("openrouteservice-js");
     var Directions = new openrouteservice.Directions({ api_key: "5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559"});
 
     const [PolyLines, setPolygonLines] = useState([]);
@@ -35,7 +35,10 @@ const MapScreen = () => {
             console.log(str);
         });
     },[])
-    console.log(PolyLines);
+    console.log(PolyLines);*/
+
+    
+
     
 
 

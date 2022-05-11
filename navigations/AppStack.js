@@ -14,6 +14,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
 import MapScreen from '../screens/MapScreen';
 import AddUserData from '../screens/AddUserData';
+import Register from '../screens/Register';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -90,6 +91,11 @@ const FeedStack = ({navigation}) => (
     />
   </Stack.Navigator>
 );
+const RegistrationStack = ({navigation}) => (
+  <Stack.Navigator>
+    <Stack.Screen name="Register" component={Register} />
+  </Stack.Navigator>
+);
 
 const MessageStack = ({navigation}) => (
   <Stack.Navigator>
@@ -120,6 +126,20 @@ const ProfileStack = ({navigation}) => (
       component={EditProfileScreen}
       options={{
         headerTitle: 'Edit Profile',
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+    <Stack.Screen
+      name="Register"
+      component={Register}
+      options={{
+        headerTitle: 'Register',
         headerBackTitleVisible: false,
         headerTitleAlign: 'center',
         headerStyle: {

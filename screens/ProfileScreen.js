@@ -12,6 +12,7 @@ import {
 import {useAuth} from '../navigations/AuthContext';
 
 import { db } from '../firebaseConfig';
+
 //import PostCard from '../components/PostCard';
 
 const ProfileScreen = ({navigation, route}) => {
@@ -155,6 +156,7 @@ const ProfileScreen = ({navigation, route}) => {
               <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
                 <Text style={styles.userBtnTxt}>Logout</Text>
               </TouchableOpacity>
+             
             </>
           )}
         </View>

@@ -2,14 +2,14 @@ import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import * as ImagePicker from 'expo-image-picker';
 
-const SignUpScreen = () => {
+const Register = () => {
   return (
     <View>
-      <Text>signup</Text>
+      <Text>register</Text>
     </View>
   );
 };
 
-export default SignUpScreen;
+export default Register;
 
 const styles = StyleSheet.create({});

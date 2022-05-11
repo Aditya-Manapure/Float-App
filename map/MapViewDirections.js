@@ -87,7 +87,7 @@ class MapViewDirections extends Component {
 			language = 'en',
 			optimizeWaypoints,
 			splitWaypoints,
-			directionsServiceBaseUrl = 'https://api.openrouteservice.org/v2/directions/driving-car?api_key=',
+			directionsServiceBaseUrl = 'https://api.openrouteservice.org/v2/directions/driving-car/json',
 			region,
 			precision = 'low',
 			timePrecision = 'none',
@@ -100,6 +100,7 @@ class MapViewDirections extends Component {
 		}
 
 		if (!initialOrigin || !initialDestination) {
+			console.log("origin or destination not initialized");
 			return;
 		}
 

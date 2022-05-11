@@ -28,6 +28,8 @@ export function AuthProvider ({children}) {
         return auth.signOut();
     }
 
+  
+
     function resetPassword(email) {
         return auth.sendPasswordResetEmail(email);
     }

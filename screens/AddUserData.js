@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   View,
   Text,
+  StyleSheet,
   TouchableOpacity,
   Image,
   TextInput,
@@ -136,15 +137,28 @@ const  AddUserData = () => {
             width: "100%",
           }}
         />
-        <View style={{ marginTop: "auto", width: 80 }}>
-          <Button
-            title="Next"
-            color={colors.secondary}
-            onPress={handlePress}
-            disabled={!displayName}
+        <View style={{ marginTop: "auto"}}> 
+        <Button
+            title="Back"
+            onPress={() => {
+              navigation.navigate("Profile");
+            }}
+            
           />
+          <Button
+            title="Save"
+            onPress={handlePress}
+          />
+          <Button
+            title="Add Documents"
+            onPress={() => {
+              navigation.navigate("Register");
+            }}
+           
+          />
+
         </View>
-      </View>
+       </View> 
     </React.Fragment>
   );
 }
