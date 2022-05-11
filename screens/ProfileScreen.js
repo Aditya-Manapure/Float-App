@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import {
   View,
   Text,
@@ -8,14 +8,16 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
+
 //import FormButton from '../components/FormButton';
-import {useAuth} from '../navigations/AuthContext';
+import { useAuth } from '../navigations/AuthContext';
 
 import { db } from '../firebaseConfig';
+import { shadow, TouchableRipple } from 'react-native-paper';
 //import PostCard from '../components/PostCard';
 
-const ProfileScreen = ({navigation, route}) => {
-  const {currentUser, logout} = useAuth();
+const ProfileScreen = ({ navigation, route }) => {
+  const { currentUser, logout } = useAuth();
 
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -90,7 +92,7 @@ const ProfileScreen = ({navigation, route}) => {
   }, [navigation, loading]);
 
   console.log(currentUser.uid);
-  const getUser = async() => {
+  const getUser = async () => {
     /*await db.collection('users')
     .doc( route.params ? route.params.userId : currentUser.uid)
     .get()
@@ -102,44 +104,44 @@ const ProfileScreen = ({navigation, route}) => {
     })*/
     console.log('getUser');
     const documentSnapshot = await db.collection('users')
-        .doc(currentUser.uid)
-        .get();
+      .doc(currentUser.uid)
+      .get();
     //console.log(documentSnapshot);
-    
+
     const userData = documentSnapshot.data();
     setUserData(userData);
-    
+
   }
 
- 
 
-  const handleDelete = () => {};
+
+  const handleDelete = () => { };
 
   return (
-    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
       <ScrollView
         style={styles.container}
-        contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}}
+        contentContainerStyle={{ justifyContent: 'center', alignItems: 'center' }}
         showsVerticalScrollIndicator={false}>
         <Image
           style={styles.userImg}
-          source={{uri: userData ? userData.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
+          source={{ uri: userData ? userData.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' }}
         />
         <Text style={styles.userName}>{userData ? userData.displayName || 'Test' : 'Test'}</Text>
         {/* <Text>{route.params ? route.params.userId : user.uid}</Text> */}
         <Text style={styles.aboutUser}>
-        {userData ? userData.email || 'No email added.' : ''}
+          {userData ? userData.email || 'No email added.' : ''}
         </Text>
         <Text style={styles.aboutUser}>
-        {userData ? userData.about || 'No details added.' : ''}
+          {userData ? userData.about || 'No details added.' : ''}
         </Text>
         <View style={styles.userBtnWrapper}>
           {route.params ? (
             <>
-              <TouchableOpacity style={styles.userBtn} onPress={() => {}}>
+              <TouchableOpacity style={styles.userBtn} onPress={() => { }}>
                 <Text style={styles.userBtnTxt}>Message</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={styles.userBtn} onPress={() => {}}>
+              <TouchableOpacity style={styles.userBtn} onPress={() => { }}>
                 <Text style={styles.userBtnTxt}>Follow</Text>
               </TouchableOpacity>
             </>
@@ -173,11 +175,22 @@ const ProfileScreen = ({navigation, route}) => {
             <Text style={styles.userInfoSubTitle}>Lift Strike</Text>
           </View>
         </View>
+        <TouchableRipple onPress={() => { navigation.navigate('AddVehicle'); }}>
+          <View style={styles.menuItem}>
+            <Text style={styles.menuItemText}>
+              Vehicles
+            </Text>
+          </View>
+        </TouchableRipple>
 
         {posts.map((item) => (
           <PostCard key={item.id} item={item} onDelete={handleDelete} />
         ))}
+
       </ScrollView>
+      <View>
+        <Text style={styles.vehicleInfoTitle}>VEHICLE</Text>
+      </View>
     </SafeAreaView>
   );
 };
@@ -245,6 +258,10 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
   },
+  vehicleInfoTitle: {
+    fontSize: 25,
+    fontWeight: 'bold',
+  }
 });
 
 

@@ -19,8 +19,8 @@ import { useNavigation } from "@react-navigation/native";
 import { useAuth } from '../navigations/AuthContext';
 
 
-const  AddUserData = () => {
- 
+const AddUserData = () => {
+
   const [displayName, setDisplayName] = useState("");
   const [selectedImage, setSelectedImage] = useState(null);
   const [permissionStatus, setPermissionStatus] = useState(null);
@@ -28,7 +28,7 @@ const  AddUserData = () => {
   const navigation = useNavigation();
 
   const { currentUser } = useAuth();
- 
+
   useEffect(() => {
     (async () => {
       const status = await askForPermission();
@@ -68,7 +68,7 @@ const  AddUserData = () => {
     navigation.navigate("Profile");
   }
 
-  
+
   async function handleProfilePicture() {
     const result = await pickImage();
     if (!result.cancelled) {
