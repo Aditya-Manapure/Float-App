@@ -8,6 +8,10 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
+<<<<<<< HEAD
+=======
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+>>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
 
 //import FormButton from '../components/FormButton';
 import { useAuth } from '../navigations/AuthContext';
@@ -19,9 +23,9 @@ import { shadow, TouchableRipple } from 'react-native-paper';
 const ProfileScreen = ({ navigation, route }) => {
   const { currentUser, logout } = useAuth();
 
-  const [posts, setPosts] = useState([]);
+  //const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [deleted, setDeleted] = useState(false);
+  //const [deleted, setDeleted] = useState(false);
   const [userData, setUserData] = useState(null);
 
   /*const fetchPosts = async () => {
@@ -183,9 +187,46 @@ const ProfileScreen = ({ navigation, route }) => {
           </View>
         </TouchableRipple>
 
-        {posts.map((item) => (
+        {/*posts.map((item) => (
           <PostCard key={item.id} item={item} onDelete={handleDelete} />
+<<<<<<< HEAD
         ))}
+=======
+        ))*/}
+
+        <View style={styles.menuWrapper}>
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="heart-outline" color="#2e64e5" size={25}/>
+              <Text style={styles.menuItemText}>Your Favorites</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="credit-card" color="#2e64e5" size={25}/>
+              <Text style={styles.menuItemText}>Payment</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="share-outline" color="#2e64e5" size={25}/>
+              <Text style={styles.menuItemText}>Tell Your Friends</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="account-check-outline" color="#2e64e5" size={25}/>
+              <Text style={styles.menuItemText}>Support</Text>
+            </View>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {}}>
+            <View style={styles.menuItem}>
+              <Icon name="settings-outline" color="#FF6347" size={25}/>
+              <Text style={styles.menuItemText}>Settings</Text>
+            </View>
+          </TouchableOpacity>
+      </View>
+>>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
 
       </ScrollView>
       <View>
@@ -201,7 +242,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    padding: 20,
+    padding: 5,
   },
   userImg: {
     height: 120,
@@ -239,9 +280,14 @@ const styles = StyleSheet.create({
     color: '#2e64e5',
   },
   userInfoWrapper: {
+    borderBottomColor: '#2e64e5',
+    borderBottomWidth: 2,
+    borderTopColor: '#2e64e5',
+    borderTopWidth: 2,
     flexDirection: 'row',
     justifyContent: 'space-around',
     width: '100%',
+    padding : 8,
     marginVertical: 20,
   },
   userInfoItem: {
@@ -258,10 +304,30 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
   },
+<<<<<<< HEAD
   vehicleInfoTitle: {
     fontSize: 25,
     fontWeight: 'bold',
   }
+=======
+  menuWrapper: {
+    marginTop: 10,
+
+  },
+  menuItem: {
+    flexDirection: 'row',
+    paddingVertical: 15,
+    paddingHorizontal: 30,
+    marginRight : 170
+  },
+  menuItemText: {
+    color: '#777777',
+    marginLeft: 20,
+    fontWeight: '600',
+    fontSize: 16,
+    lineHeight: 26,
+  },
+>>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
 });
 
 

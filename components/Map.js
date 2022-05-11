@@ -5,7 +5,11 @@ import MapView, { Callout, Marker } from 'react-native-maps';
 import { useAuth } from '../navigations/AuthContext';
 import * as Location from 'expo-location';
 //import MapViewDirections from 'react-native-maps-directions';
+<<<<<<< HEAD
 // import MapViewDirections from '../map/MapViewDirections';
+=======
+//import MapViewDirections from '../map/MapViewDirections';
+>>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
 //import { GOOGLE_MAPS_APIKEY, OPEN_ROUTE_SERVICE_APIKEY } from "@env";
 import { Dimensions } from 'react-native';
 //import { set } from 'immer/dist/internal';
@@ -56,13 +60,18 @@ const Map = () => {
           longitudeDelta: LONGITUDE_DELTA,
         }}
       >
+<<<<<<< HEAD
         {/* <MapViewDirections
+=======
+          {/*<MapViewDirections
+>>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
             origin={origin}
             destination={destination}
             apikey={OPEN_ROUTE_SERVICE_APIKEY}
             strokeWidth={3}
             strokeColor="hotpink"
 
+<<<<<<< HEAD
           /> */}
         <Marker
           coordinate={{ latitude: currLat, longitude: currLng }}
@@ -73,6 +82,18 @@ const Map = () => {
             source={{ uri: currentUser ? currentUser.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' }}
           />
           {/*<Callout tooltip>
+=======
+          />*/}
+          <Marker
+            coordinate={{ latitude : currLat , longitude : currLng }}
+            title = {currentUser.displayName}
+          >
+            <Image 
+              style = {styles.mapUserImg}
+              source = {{uri : currentUser ? currentUser.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
+            />
+            {/*<Callout tooltip>
+>>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
               <View>
                 <View style={styles.bubble}>
                   <Text style={styles.name}>{currentUser.displayName}</Text>
