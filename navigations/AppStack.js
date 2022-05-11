@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, TouchableOpacity, Text} from 'react-native';
+import { View, TouchableOpacity, Text } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -12,6 +12,7 @@ import ProfileScreen from '../screens/ProfileScreen';
 //import AddPostScreen from '../screens/AddPostScreen';
 //import MessagesScreen from '../screens/MessagesScreen';
 import EditProfileScreen from '../screens/EditProfileScreen';
+import AddVehicle from '../screens/AddVehicle';
 import MapScreen from '../screens/MapScreen';
 import AddUserData from '../screens/AddUserData';
 import Register from '../screens/Register';
@@ -19,13 +20,13 @@ import Register from '../screens/Register';
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
 
-const FeedStack = ({navigation}) => (
+const FeedStack = ({ navigation }) => (
   <Stack.Navigator>
     <Stack.Screen
       name="Map"
       component={MapScreen}
       options={{
-        headerShown :false,
+        headerShown: false,
         /*headerTitleAlign: 'center',
         headerTitleStyle: {
           color: '#2e64e5',
@@ -53,7 +54,7 @@ const FeedStack = ({navigation}) => (
       name="Home"
       component={HomeScreen}
       options={{
-        headerShown :false,
+        headerShown: false,
         /*title: '',
         headerTitleAlign: 'center',
         headerStyle: {
@@ -73,7 +74,7 @@ const FeedStack = ({navigation}) => (
       name="Profile"
       component={ProfileScreen}
       options={{
-        headerShown :false,
+        headerShown: false,
         /*title: '',
         headerTitleAlign: 'center',
         headerStyle: {
@@ -97,13 +98,13 @@ const RegistrationStack = ({navigation}) => (
   </Stack.Navigator>
 );
 
-const MessageStack = ({navigation}) => (
+const MessageStack = ({ navigation }) => (
   <Stack.Navigator>
     <Stack.Screen name="AddUserData" component={AddUserData} />
     <Stack.Screen
       name="EditProfile"
       component={EditProfileScreen}
-      options={({route}) => ({
+      options={({ route }) => ({
         headerShown: false,
         title: route.params.userName,
         headerBackTitleVisible: false,
@@ -112,7 +113,7 @@ const MessageStack = ({navigation}) => (
   </Stack.Navigator>
 );
 
-const ProfileStack = ({navigation}) => (
+const ProfileStack = ({ navigation }) => (
   <Stack.Navigator>
     <Stack.Screen
       name="Profile"
@@ -136,10 +137,17 @@ const ProfileStack = ({navigation}) => (
       }}
     />
     <Stack.Screen
+<<<<<<< HEAD
       name="Register"
       component={Register}
       options={{
         headerTitle: 'Register',
+=======
+      name="AddVehicle"
+      component={AddVehicle}
+      options={{
+        headerTitle: 'Add Vehicle',
+>>>>>>> 62ccc8d5fddeca75af26e4b006e3fca85b602ea0
         headerBackTitleVisible: false,
         headerTitleAlign: 'center',
         headerStyle: {
@@ -172,11 +180,11 @@ const AppStack = () => {
       <Tab.Screen
         name="Home"
         component={FeedStack}
-        options={({route}) => ({
-          headerShown : false,
+        options={({ route }) => ({
+          headerShown: false,
           tabBarLabel: 'Home',
           tabBarVisible: route.state && route.state.index === 0,
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="home-outline"
               color={color}
@@ -188,14 +196,14 @@ const AppStack = () => {
       <Tab.Screen
         name="AddUserData"
         component={AddUserData}
-        options={({route}) => ({
-          headerShown : false,
+        options={({ route }) => ({
+          headerShown: false,
           tabBarVisible: getTabBarVisibility(route),
           // Or Hide tabbar when push!
           // https://github.com/react-navigation/react-navigation/issues/7677
           // tabBarVisible: route.state && route.state.index === 0,
           // tabBarLabel: 'Home',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons
               name="chatbox-ellipses-outline"
               color={color}
@@ -209,7 +217,7 @@ const AppStack = () => {
         component={ProfileStack}
         options={{
           tabBarLabel: 'Profile',
-          tabBarIcon: ({color, size}) => (
+          tabBarIcon: ({ color, size }) => (
             <Ionicons name="person-outline" color={color} size={size} />
           ),
         }}
