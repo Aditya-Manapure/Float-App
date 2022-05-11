@@ -21,11 +21,14 @@ import { RadioButton } from "react-native-paper";
 
 const AddVehicle = () => {
 
-    const [checked, setChecked] = React.useState('Car');
-    const handlePress = () => {
-        db.collection('users').add({
+    const { currentUser } = useAuth();
 
-        })
+    const [vehicleNo, setVehicleNo] = useState('');
+    const [model, setModel] = useState('');
+    const [checked, setChecked] = React.useState('car');
+
+    const handlePress = () => {
+        db.collection("users").doc(currentUser.uid).update({ vehicleNo: vehicleNo, vehicleModel: model, vehicleType: checked });
     }
     return (
         <React.Fragment>
@@ -42,7 +45,7 @@ const AddVehicle = () => {
                 <TextInput
                     placeholder="Enter vehicle number"
                     // value={displayName}
-                    // onChangeText={setDisplayName}
+                    onChangeText={setVehicleNo}
                     style={{
 
                         marginTop: 40,
@@ -52,8 +55,8 @@ const AddVehicle = () => {
                 />
                 <TextInput
                     placeholder="Model name"
-                    // value={displayName}
-                    // onChangeText={setDisplayName}
+                    //value={displayName}
+                    onChangeText={setModel}
                     style={{
 
                         marginTop: 40,
@@ -63,15 +66,21 @@ const AddVehicle = () => {
                 />
                 <View>
                     <RadioButton
-                        label='Car'
-                        value='Car'
-                        status={checked === 'Car' ? 'checked' : 'unchecked'}
-                        onPress={() => setChecked('Car')}
+                        label='car'
+                        value='car'
+                        status={checked === 'car' ? 'checked' : 'unchecked'}
+                        onPress={() => setChecked('car')}
                     />
                     <RadioButton
-                        value="Bike"
-                        status={checked === 'Bike' ? 'checked' : 'unchecked'}
-                        onPress={() => setChecked('Bike')}
+                        value="bike"
+                        status={checked === 'bike' ? 'checked' : 'unchecked'}
+                        onPress={() => setChecked('bike')}
+                    />
+                    <RadioButton
+                        label='taxi'
+                        value='taxi'
+                        status={checked === 'taxi' ? 'checked' : 'unchecked'}
+                        onPress={() => setChecked('taxi')}
                     />
                 </View>
                 <View style={{ marginTop: "auto", width: 80 }}>

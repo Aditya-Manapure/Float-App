@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, TouchableOpacity, SafeAreaView, Image} from 'react-native';
+import { StyleSheet, View, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
 import NavOptions from '../components/NavOptions';
 import { useNavigation } from '@react-navigation/native';
@@ -40,43 +40,47 @@ const HomeScreen = () => {
     },
     { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
   );*/
- 
+
   const navigation = useNavigation();
 
   return (
     <SafeAreaView style={tw`bg-white h-full`}>
-      <View style = {tw`p-5`}>
-        <View style = {{
-          display : 'flex',
-          flexDirection : 'row',
-          justifyContent : 'space-between'
+      <View style={tw`p-5`}>
+        <View style={styles.container}>
+          <View style={styles.button} />
+          <View style={styles.button} />
+        </View>
+        <View style={{
+          display: 'flex',
+          flexDirection: 'row',
+          justifyContent: 'space-between'
         }}>
-          <Image 
-              style = {{
-                  width : 100,
-                  height : 100,
-                  resizeMode :"contain",
-              }}
-              source = {
-                require('../assets/Logo.png')
+          <Image
+            style={{
+              width: 100,
+              height: 100,
+              resizeMode: "contain",
+            }}
+            source={
+              require('../assets/Logo.png')
                 /*{
                   //uri : "",
               }*/}
           />
           <TouchableOpacity
-              onPress = {() =>navigation.navigate('Profile')}
+            onPress={() => navigation.navigate('Profile')}
           >
-            <Image 
-                style = {{
-                    width : 35,
-                    height : 35,
-                    borderRadius: 100,
-                    marginTop : 30,
-                    marginRight : 5,
-                    resizeMode :"contain",
-                }}
-                source = {
-                  require('../assets/1.png')
+            <Image
+              style={{
+                width: 35,
+                height: 35,
+                borderRadius: 100,
+                marginTop: 30,
+                marginRight: 5,
+                resizeMode: "contain",
+              }}
+              source={
+                require('../assets/1.png')
                   /*{
                     //uri : "",
                 }*/}
@@ -101,6 +105,7 @@ const HomeScreen = () => {
               debounce={400}
         />*/}
         <NavOptions />
+
       </View>
     </SafeAreaView>
   );
@@ -109,7 +114,17 @@ const HomeScreen = () => {
 export default HomeScreen;
 
 const styles = StyleSheet.create({
-    text :{
-        color : 'red',
-    }
+  text: {
+    color: 'red',
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  },
+  button: {
+    backgroundColor: 'green',
+    width: '40%',
+    height: 40
+  }
 });
