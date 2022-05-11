@@ -7,7 +7,11 @@ import { FlatList, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 const MapScreen = () => {
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 87c68a1265ab8b1ec5168dadd1651e335ea886e8
     /*var openrouteservice = require("openrouteservice-js");
     var Directions = new openrouteservice.Directions({ api_key: "5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559"});
 
@@ -37,8 +41,37 @@ const MapScreen = () => {
     },[])
     console.log(PolyLines);*/
 
+<<<<<<< HEAD
 
 
+=======
+    /*let request = new XMLHttpRequest();
+
+    request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
+
+    request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('Authorization', '5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559');
+
+    var jsonObject; 
+
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            console.log('Status:', this.status);
+            console.log('Headers:', this.getAllResponseHeaders());
+            console.log('Body:', this.responseText);
+            this.jsonObject = this.responseText;
+            console.log("121423JSON_OBJECT-----------------------------");
+            if(typeof jsonObject === 'string') console.log("STRINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
+        }
+    };
+
+    const body = '{"coordinates":[[8.681495,49.41461],[8.686507,49.41943],[8.687872,49.420318]]}';
+
+    request.send(body);
+    console.log("JSON_OBJECT-----------------------------");
+    console.log(jsonObject);*/
+>>>>>>> 87c68a1265ab8b1ec5168dadd1651e335ea886e8
 
 
 

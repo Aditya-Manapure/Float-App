@@ -18,10 +18,12 @@ class MapViewDirections extends Component {
 	}
 
 	componentDidMount() {
+		console.log("componentDidMount");
 		this.fetchAndRenderRoute(this.props);
 	}
 
 	componentDidUpdate(prevProps) {
+		console.log("componentDidUpdate");
 		if (!isEqual(prevProps.origin, this.props.origin) || !isEqual(prevProps.destination, this.props.destination) || !isEqual(prevProps.waypoints, this.props.waypoints) || !isEqual(prevProps.mode, this.props.mode) || !isEqual(prevProps.precision, this.props.precision) || !isEqual(prevProps.splitWaypoints, this.props.splitWaypoints)) {
 			if (this.props.resetOnChange === false) {
 				this.fetchAndRenderRoute(this.props);
@@ -42,6 +44,7 @@ class MapViewDirections extends Component {
 	}
 
 	decode(t) {
+		console.log("decode");
 		let points = [];
 		for (let step of t) {
 			let encoded = step.polyline.points;
@@ -74,7 +77,7 @@ class MapViewDirections extends Component {
 	}
 
 	fetchAndRenderRoute = (props) => {
-
+		console.log("fetchAndRenderRoute");
 		let {
 			origin: initialOrigin,
 			destination: initialDestination,
@@ -229,9 +232,9 @@ class MapViewDirections extends Component {
 	}
 
 	fetchRoute(directionsServiceBaseUrl, origin, waypoints, destination, apikey, mode, language, region, precision, timePrecision, channel) {
-
+		console.log("fetchRoute");
 		// Define the URL to call. Only add default parameters to the URL if it's a string.
-		let url = directionsServiceBaseUrl;
+		/*let url = directionsServiceBaseUrl;
 		if (typeof (directionsServiceBaseUrl) === 'string') {
 			url += `?origin=${origin}&waypoints=${waypoints}&destination=${destination}&key=${apikey}&mode=${mode.toLowerCase()}&language=${language}&region=${region}`;
 			if(timePrecision){
@@ -240,9 +243,76 @@ class MapViewDirections extends Component {
 			if(channel){
 				url+=`&channel=${channel}`;
 			}
-		}
+		}*/
 
-		return fetch(url)
+		var textjson;
+		let request = new XMLHttpRequest();
+
+		request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
+
+		request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
+		request.setRequestHeader('Content-Type', 'application/json');
+		request.setRequestHeader('Authorization', '5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559');
+
+		request.onreadystatechange = function () {
+			if (this.readyState === 4) {
+				console.log('Status:', this.status);
+				console.log('Headers:', this.getAllResponseHeaders());
+				console.log('Body:', this.responseText);
+			}
+		};
+
+		const body = '{"coordinates":[[16.847350827401808, 74.59880747474361],[16.84680660367126, 74.60042752904826],[16.845574393214125, 74.6036139934753]]}';
+
+		request.send(body)
+
+		var json = textjson;
+
+			console.log("-------------------------------------------------------------------------------------------------");
+			console.log("json file");
+			console.log(json);
+
+			console.log("json is added");
+			console.log(json.routes.length);
+
+			if (json.status !== 'OK') {
+				const errorMessage = json.error_message || json.status || 'Unknown error';
+				return Promise.reject(errorMessage);
+			}
+
+			if (json.routes.length) {
+
+				const route = json.routes[0];
+
+				return Promise.resolve({
+					distance: route.legs.reduce((carry, curr) => {
+						return carry + curr.distance.value;
+					}, 0) / 1000,
+					duration: route.legs.reduce((carry, curr) => {
+						return carry + (curr.duration_in_traffic ? curr.duration_in_traffic.value : curr.duration.value);
+					}, 0) / 60,
+					coordinates: (
+						(precision === 'low') ?
+							this.decode([{polyline: route.overview_polyline}]) :
+							route.legs.reduce((carry, curr) => {
+								return [
+									...carry,
+									...this.decode(curr.steps),
+								];
+							}, [])
+					),
+					fare: route.fare,
+					waypointOrder: route.waypoint_order,
+					legs: route.legs,
+				});
+
+			} else {
+				return Promise.reject();
+			}
+			
+		
+
+		/*return fetch(url)
 			.then(response => response.json())
 			.then(json => {
 
@@ -283,7 +353,7 @@ class MapViewDirections extends Component {
 			})
 			.catch(err => {
 				return Promise.reject(`Error on GMAPS route request: ${err}`);
-			});
+			});*/
 	}
 
 	render() {
@@ -307,6 +377,8 @@ class MapViewDirections extends Component {
 			precision,  // eslint-disable-line no-unused-vars
 			...props
 		} = this.props;
+
+		console.log(this.props);
 
 		return (
 			<MapView.Polyline coordinates={coordinates} {...props} />

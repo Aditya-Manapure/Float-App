@@ -5,14 +5,15 @@ import MapView ,{ Callout, Marker } from 'react-native-maps';
 import { useAuth } from '../navigations/AuthContext';
 import * as Location from 'expo-location';
 //import MapViewDirections from 'react-native-maps-directions';
+import MapViewDirections from '../map/MapViewDirections';
 //import { GOOGLE_MAPS_APIKEY, OPEN_ROUTE_SERVICE_APIKEY } from "@env";
 import {Dimensions} from 'react-native';
 //import { set } from 'immer/dist/internal';
 const { height, width } = Dimensions.get( 'window' ); 
 
 const Map = () => {
-  //const origin = {latitude: 37.3318456, longitude: -122.0296002};
-  //const destination = {latitude: 37.771707, longitude: -122.4053769};
+  const origin = {latitude: 16.847350827401808, longitude:74.59880747474361};
+  const destination = {latitude: 16.845574393214125, longitude: 74.6036139934753};
   const LATITUDE_DELTA = 0.12;
   const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height)
 
@@ -23,7 +24,7 @@ const Map = () => {
 
   const [currLat, setCurrLat] = useState(16.845839702003307);
   const [currLng, setCurrLng] = useState(74.60094760130845);
-  
+  const OPEN_ROUTE_SERVICE_APIKEY = "5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559"
 
   useEffect(() => {
     (async () => {
@@ -55,11 +56,14 @@ const Map = () => {
             longitudeDelta: LONGITUDE_DELTA,
             }}
       >
-          {/*<MapViewDirections
+          <MapViewDirections
             origin={origin}
             destination={destination}
             apikey={OPEN_ROUTE_SERVICE_APIKEY}
-          />*/}
+            strokeWidth={3}
+            strokeColor="hotpink"
+
+          />
           <Marker
             coordinate={{ latitude : currLat , longitude : currLng }}
             title = {currentUser.displayName}
