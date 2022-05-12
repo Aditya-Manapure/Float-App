@@ -8,7 +8,6 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 //import FormButton from '../components/FormButton';
@@ -79,7 +78,7 @@ const ProfileScreen = ({ navigation, route }) => {
   /*useEffect( () => {
     db.collection('users').onSnapshot(snapshot =>{
       setUsers(snapshot.docs.map(doc =>( {
-        id : doc.id, 
+        id : doc.id,
         user : doc.data()
       })));
     })
@@ -160,7 +159,7 @@ const ProfileScreen = ({ navigation, route }) => {
               <TouchableOpacity style={styles.userBtn} onPress={() => logout()}>
                 <Text style={styles.userBtnTxt}>Logout</Text>
               </TouchableOpacity>
-             
+
             </>
           )}
         </View>
@@ -215,7 +214,11 @@ const ProfileScreen = ({ navigation, route }) => {
               <Text style={styles.menuItemText}>Settings</Text>
             </View>
           </TouchableOpacity>
+<<<<<<< HEAD
+      </View>
+=======
         </View>
+>>>>>>> 46455c7fb3e2f904a23a14c0e04353cc626ee1c3
 
       </ScrollView>
     </SafeAreaView>
@@ -358,19 +361,19 @@ const ProfileScreen = () => {
                <View style={styles.row}>
                    <Icon name='map-maker-radius' color='#777777' size={20}/>
                    <Text style={{color : '#777777', marginLeft : 20}}>Bhandara, India</Text>
-               </View> 
-               <View style={styles.row}> 
-                   <Icon name='map-maker-radius' color='#777777' size={20}/>
-                   <Text style={{color : '#777777', marginLeft : 20}}>Bhandara, India</Text>
-               </View> 
+               </View>
                <View style={styles.row}>
                    <Icon name='map-maker-radius' color='#777777' size={20}/>
                    <Text style={{color : '#777777', marginLeft : 20}}>Bhandara, India</Text>
-               </View> 
+               </View>
                <View style={styles.row}>
                    <Icon name='map-maker-radius' color='#777777' size={20}/>
                    <Text style={{color : '#777777', marginLeft : 20}}>Bhandara, India</Text>
-               </View> 
+               </View>
+               <View style={styles.row}>
+                   <Icon name='map-maker-radius' color='#777777' size={20}/>
+                   <Text style={{color : '#777777', marginLeft : 20}}>Bhandara, India</Text>
+               </View>
             <View style={styles.userInfoSection}>
             </View>
 

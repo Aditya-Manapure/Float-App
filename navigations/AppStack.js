@@ -94,7 +94,12 @@ const FeedStack = ({ navigation }) => (
 );
 const RegistrationStack = ({navigation}) => (
   <Stack.Navigator>
-    <Stack.Screen name="Register" component={Register} />
+    <Stack.Screen name="Register"
+    options={{
+      headerShown: false,
+      headerBackTitleVisible: false,
+    }}
+    component={Register} />
   </Stack.Navigator>
 );
 
@@ -114,7 +119,11 @@ const MessageStack = ({ navigation }) => (
 );
 
 const ProfileStack = ({ navigation }) => (
-  <Stack.Navigator>
+  <Stack.Navigator
+  screenOptions = {{
+    headerShown : false
+  }}
+  >
     <Stack.Screen
       name="Profile"
       component={ProfileScreen}

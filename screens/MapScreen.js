@@ -35,7 +35,10 @@ const MapScreen = () => {
         });
     },[])
     console.log(PolyLines);*/
+<<<<<<< HEAD
 
+=======
+>>>>>>> c102637da64a736996f26323ef2fe50c28cba0b2
     /*let request = new XMLHttpRequest();
 
     request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
@@ -44,7 +47,7 @@ const MapScreen = () => {
     request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('Authorization', '5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559');
 
-    var jsonObject; 
+    var jsonObject;
 
     request.onreadystatechange = function () {
         if (this.readyState === 4) {

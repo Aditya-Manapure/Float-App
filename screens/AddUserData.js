@@ -116,7 +116,7 @@ const AddUserData = () => {
           {!selectedImage ? (
             <MaterialCommunityIcons
               name="camera-plus"
-              color={colors.iconGray}
+              // color={colors.iconGray}
               size={45}
             />
           ) : (

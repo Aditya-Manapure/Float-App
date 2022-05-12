@@ -11,6 +11,7 @@ import MapViewDirections from 'react-native-maps-directions';
 //import MapViewDirections from '../map/MapViewDirections';
 
 
+>>>>>>> 46455c7fb3e2f904a23a14c0e04353cc626ee1c3
 //import { GOOGLE_MAPS_APIKEY, OPEN_ROUTE_SERVICE_APIKEY } from "@env";
 import { Dimensions } from 'react-native';
 //import { set } from 'immer/dist/internal';
@@ -71,7 +72,7 @@ const Map = () => {
     request.setRequestHeader('Content-Type', 'application/json');
     request.setRequestHeader('Authorization', '5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559');
 
-    var jsonObject; 
+    var jsonObject;
 
     request.onreadystatechange = function () {
         if (this.readyState === 4) {
@@ -104,7 +105,7 @@ const Map = () => {
               }
             }
           }
-        
+
           const resetState = (cb = null) => {
             this.setState({
               coordinates: null,
@@ -127,7 +128,7 @@ const Map = () => {
                     result |= (b & 0x1f) << shift;
                     shift += 5;
                   } while (b >= 0x20);
-          
+
                   let dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
                   lat += dlat;
                   shift = 0;
@@ -139,7 +140,7 @@ const Map = () => {
                   } while (b >= 0x20);
                   let dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
                   lng += dlng;
-          
+
                   points.push({ latitude: (lat / 1E5), longitude: (lng / 1E5) });
                 }
               }
@@ -151,11 +152,11 @@ const Map = () => {
               const errorMessage = json.error_message || json.status || 'Unknown error';
               return Promise.reject(errorMessage);
             }
-      
+
             if (json.routes.length) {
-      
+
               const route = json.routes[0];
-      
+
               return Promise.resolve({
                 distance: route.legs.reduce((carry, curr) => {
                   return carry + curr.distance.value;
@@ -177,7 +178,7 @@ const Map = () => {
                 waypointOrder: route.waypoint_order,
                 legs: route.legs,
               });
-      
+
             } else {
               return Promise.reject();
             }
@@ -235,14 +236,37 @@ const Map = () => {
           longitudeDelta: LONGITUDE_DELTA,
         }}
       >
+<<<<<<< HEAD
         <MapViewDirections
+=======
+<<<<<<< HEAD
+          {/*<MapViewDirections
+=======
+        {/*<MapViewDirections
+>>>>>>> 46455c7fb3e2f904a23a14c0e04353cc626ee1c3
+>>>>>>> c102637da64a736996f26323ef2fe50c28cba0b2
             origin={origin}
             destination={destination}
             apikey={OPEN_ROUTE_SERVICE_APIKEY}
             strokeWidth={3}
             strokeColor="hotpink"
 
+<<<<<<< HEAD
           />
+=======
+          />*/}
+<<<<<<< HEAD
+          <Marker
+            coordinate={{ latitude : currLat , longitude : currLng }}
+            title = {currentUser.displayName}
+          >
+            <Image
+              style = {styles.mapUserImg}
+              source = {{uri : currentUser ? currentUser.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
+            />
+            {/*<Callout tooltip>
+=======
+>>>>>>> c102637da64a736996f26323ef2fe50c28cba0b2
         <Marker
           coordinate={{ latitude: currLat, longitude: currLng }}
           title={currentUser.displayName}
@@ -252,6 +276,7 @@ const Map = () => {
             source={{ uri: currentUser ? currentUser.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' }}
           />
           {/*<Callout tooltip>
+>>>>>>> 46455c7fb3e2f904a23a14c0e04353cc626ee1c3
               <View>
                 <View style={styles.bubble}>
                   <Text style={styles.name}>{currentUser.displayName}</Text>
