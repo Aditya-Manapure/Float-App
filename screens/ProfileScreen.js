@@ -8,20 +8,13 @@ import {
   ScrollView,
   SafeAreaView,
 } from 'react-native';
-<<<<<<< HEAD
-=======
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
->>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
 
 //import FormButton from '../components/FormButton';
 import { useAuth } from '../navigations/AuthContext';
 
 import { db } from '../firebaseConfig';
-<<<<<<< HEAD
-
-=======
 import { shadow, TouchableRipple } from 'react-native-paper';
->>>>>>> 62ccc8d5fddeca75af26e4b006e3fca85b602ea0
 //import PostCard from '../components/PostCard';
 
 const ProfileScreen = ({ navigation, route }) => {
@@ -194,9 +187,6 @@ const ProfileScreen = ({ navigation, route }) => {
 
         {/*posts.map((item) => (
           <PostCard key={item.id} item={item} onDelete={handleDelete} />
-<<<<<<< HEAD
-        ))}
-=======
         ))*/}
 
         <View style={styles.menuWrapper}>
@@ -231,7 +221,6 @@ const ProfileScreen = ({ navigation, route }) => {
             </View>
           </TouchableOpacity>
       </View>
->>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
 
       </ScrollView>
       <View>
@@ -309,12 +298,6 @@ const styles = StyleSheet.create({
     color: '#666',
     textAlign: 'center',
   },
-<<<<<<< HEAD
-  vehicleInfoTitle: {
-    fontSize: 25,
-    fontWeight: 'bold',
-  }
-=======
   menuWrapper: {
     marginTop: 10,
 
@@ -332,7 +315,6 @@ const styles = StyleSheet.create({
     fontSize: 16,
     lineHeight: 26,
   },
->>>>>>> b0146504e9e596a0177e0e7a217164d851bb904e
 });
 
 

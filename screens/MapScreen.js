@@ -6,11 +6,6 @@ import MapView from 'react-native-maps';
 import { FlatList, TouchableOpacity, Image } from 'react-native';
 import { Icon } from 'react-native-elements';
 const MapScreen = () => {
-<<<<<<< HEAD
-
-  
-=======
->>>>>>> 62ccc8d5fddeca75af26e4b006e3fca85b602ea0
     /*var openrouteservice = require("openrouteservice-js");
     var Directions = new openrouteservice.Directions({ api_key: "5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559"});
 
@@ -39,89 +34,6 @@ const MapScreen = () => {
         });
     },[])
     console.log(PolyLines);*/
-<<<<<<< HEAD
-
-    
-
-    
-
-
-  const data = [
-    {
-        id : '123',
-        title : 'Peter Grey',
-        mobile : '8945868438',
-        image : require('../assets/2.png'),    //https://Links.papareact.com/3pn
-        screen : 'MapScreen', 
-    },
-    {
-        id : '456',
-        title : 'Harry Brown',
-        mobile : '945868438',
-        image : require('../assets/3.png'),    //'https://Links.papareact.com/28w',
-        screen : 'EatScreen', 
-    },
-    {
-      id : '7',
-      title : 'Alice Blue',
-      mobile : '7945868438',
-      image : require('../assets/4.png'),    //https://Links.papareact.com/3pn
-      screen : 'MapScreen', 
-  },
-  {
-      id : '8',
-      title : 'Peter Grey',
-      mobile : '8945868438',
-      image : require('../assets/2.png'),    //'https://Links.papareact.com/28w',
-      screen : 'EatScreen', 
-  },
-  {
-    id : '9',
-    title : 'Harry Brown',
-    mobile : '945868438',
-    image : require('../assets/3.png'),    //https://Links.papareact.com/3pn
-    screen : 'MapScreen', 
-},
-{
-    id : '10',
-    title : 'Alice Blue',
-    mobile : '7945868438',
-    image : require('../assets/4.png'),    //'https://Links.papareact.com/28w',
-    screen : 'EatScreen', 
-},
-  ];
-  return (
-    <View>
-      <View style = {tw`h-4/5`} >
-        
-        <Map
-          style = {{
-              flex : 1,
-          }}
-        /> 
-        <Text
-            style ={{
-                position: 'absolute',
-                top: 57, left: 0, right: 0, height: 35, 
-                alignItems: 'center', justifyContent: 'center',
-                marginLeft : 12,
-                fontSize : 16,
-                fontWeight : 'bold',
-                color : '#444'
-            }}
-        >From</Text>
-        <TextInput
-          placeholder='Shaniwar Wada, Pune'
-          /*style = {{ backgroundColor : 'white',
-                     marginLeft : 10,
-                     height : 35,
-                     padding : 5,
-                     width : '45%',
-          }}*/
-                     style={{ 
-                        backgroundColor : 'white', position: 'absolute',
-                        top: 80, left: 0, right: 0, height: 35, 
-=======
     /*let request = new XMLHttpRequest();
 
     request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
@@ -226,7 +138,6 @@ const MapScreen = () => {
                     style={{
                         backgroundColor: 'white', position: 'absolute',
                         top: 80, left: 0, right: 0, height: 35,
->>>>>>> 62ccc8d5fddeca75af26e4b006e3fca85b602ea0
                         alignItems: 'center', justifyContent: 'center',
                         marginLeft: 10, width: '65%',
                         padding: 5,

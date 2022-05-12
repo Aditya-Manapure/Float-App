@@ -94,7 +94,12 @@ const FeedStack = ({ navigation }) => (
 );
 const RegistrationStack = ({navigation}) => (
   <Stack.Navigator>
-    <Stack.Screen name="Register" component={Register} />
+    <Stack.Screen name="Register" 
+    options={{
+      headerShown: false,
+      headerBackTitleVisible: false,
+    }}
+    component={Register} />
   </Stack.Navigator>
 );
 
@@ -114,7 +119,11 @@ const MessageStack = ({ navigation }) => (
 );
 
 const ProfileStack = ({ navigation }) => (
-  <Stack.Navigator>
+  <Stack.Navigator
+  screenOptions = {{
+    headerShown : false
+  }}
+  >
     <Stack.Screen
       name="Profile"
       component={ProfileScreen}
@@ -137,17 +146,23 @@ const ProfileStack = ({ navigation }) => (
       }}
     />
     <Stack.Screen
-<<<<<<< HEAD
       name="Register"
-      component={Register}
+      component={RegistrationStack}
       options={{
-        headerTitle: 'Register',
-=======
+        headerBackTitleVisible: false,
+        headerTitleAlign: 'center',
+        headerStyle: {
+          backgroundColor: '#fff',
+          shadowColor: '#fff',
+          elevation: 0,
+        },
+      }}
+    />
+    <Stack.Screen
       name="AddVehicle"
       component={AddVehicle}
       options={{
         headerTitle: 'Add Vehicle',
->>>>>>> 62ccc8d5fddeca75af26e4b006e3fca85b602ea0
         headerBackTitleVisible: false,
         headerTitleAlign: 'center',
         headerStyle: {
