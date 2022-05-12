@@ -236,37 +236,14 @@ const Map = () => {
           longitudeDelta: LONGITUDE_DELTA,
         }}
       >
-<<<<<<< HEAD
         <MapViewDirections
-=======
-<<<<<<< HEAD
-          {/*<MapViewDirections
-=======
-        {/*<MapViewDirections
->>>>>>> 46455c7fb3e2f904a23a14c0e04353cc626ee1c3
->>>>>>> c102637da64a736996f26323ef2fe50c28cba0b2
             origin={origin}
             destination={destination}
             apikey={OPEN_ROUTE_SERVICE_APIKEY}
             strokeWidth={3}
             strokeColor="hotpink"
 
-<<<<<<< HEAD
           />
-=======
-          />*/}
-<<<<<<< HEAD
-          <Marker
-            coordinate={{ latitude : currLat , longitude : currLng }}
-            title = {currentUser.displayName}
-          >
-            <Image
-              style = {styles.mapUserImg}
-              source = {{uri : currentUser ? currentUser.photoURL || 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg' : 'https://lh5.googleusercontent.com/-b0PKyNuQv5s/AAAAAAAAAAI/AAAAAAAAAAA/AMZuuclxAM4M1SCBGAO7Rp-QP6zgBEUkOQ/s96-c/photo.jpg'}}
-            />
-            {/*<Callout tooltip>
-=======
->>>>>>> c102637da64a736996f26323ef2fe50c28cba0b2
         <Marker
           coordinate={{ latitude: currLat, longitude: currLng }}
           title={currentUser.displayName}

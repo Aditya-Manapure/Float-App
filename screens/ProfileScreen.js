@@ -214,11 +214,7 @@ const ProfileScreen = ({ navigation, route }) => {
               <Text style={styles.menuItemText}>Settings</Text>
             </View>
           </TouchableOpacity>
-<<<<<<< HEAD
       </View>
-=======
-        </View>
->>>>>>> 46455c7fb3e2f904a23a14c0e04353cc626ee1c3
 
       </ScrollView>
     </SafeAreaView>

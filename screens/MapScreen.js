@@ -35,10 +35,7 @@ const MapScreen = () => {
         });
     },[])
     console.log(PolyLines);*/
-<<<<<<< HEAD
 
-=======
->>>>>>> c102637da64a736996f26323ef2fe50c28cba0b2
     /*let request = new XMLHttpRequest();
 
     request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
