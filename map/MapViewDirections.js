@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import PropTypes from 'prop-types';
 import MapView from 'react-native-maps';
 import isEqual from 'lodash.isequal';
@@ -6,6 +6,8 @@ import isEqual from 'lodash.isequal';
 const WAYPOINT_LIMIT = 10;
 
 class MapViewDirections extends Component {
+
+	
 
 	constructor(props) {
 		super(props);
@@ -234,7 +236,7 @@ class MapViewDirections extends Component {
 	fetchRoute(directionsServiceBaseUrl, origin, waypoints, destination, apikey, mode, language, region, precision, timePrecision, channel) {
 		console.log("fetchRoute");
 		// Define the URL to call. Only add default parameters to the URL if it's a string.
-		/*let url = directionsServiceBaseUrl;
+		let url = directionsServiceBaseUrl;
 		if (typeof (directionsServiceBaseUrl) === 'string') {
 			url += `?origin=${origin}&waypoints=${waypoints}&destination=${destination}&key=${apikey}&mode=${mode.toLowerCase()}&language=${language}&region=${region}`;
 			if(timePrecision){
@@ -243,9 +245,9 @@ class MapViewDirections extends Component {
 			if(channel){
 				url+=`&channel=${channel}`;
 			}
-		}*/
+		}
 
-		var textjson;
+		/*var textjson;
 		let request = new XMLHttpRequest();
 
 		request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
@@ -308,11 +310,11 @@ class MapViewDirections extends Component {
 
 			} else {
 				return Promise.reject();
-			}
+			}*/
 			
 		
 
-		/*return fetch(url)
+		return fetch('http://router.project-osrm.org/route/v1/driving/13.388860,52.517037;13.397634,52.529407;13.428555,52.523219?overview=false')
 			.then(response => response.json())
 			.then(json => {
 
@@ -353,7 +355,7 @@ class MapViewDirections extends Component {
 			})
 			.catch(err => {
 				return Promise.reject(`Error on GMAPS route request: ${err}`);
-			});*/
+			});
 	}
 
 	render() {

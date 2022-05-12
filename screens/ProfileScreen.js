@@ -15,11 +15,8 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useAuth } from '../navigations/AuthContext';
 
 import { db } from '../firebaseConfig';
-<<<<<<< HEAD
 
-=======
 import { shadow, TouchableRipple } from 'react-native-paper';
->>>>>>> 62ccc8d5fddeca75af26e4b006e3fca85b602ea0
 //import PostCard from '../components/PostCard';
 
 const ProfileScreen = ({ navigation, route }) => {

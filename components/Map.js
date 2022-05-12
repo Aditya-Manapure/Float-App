@@ -1,10 +1,12 @@
 import { StyleSheet, Text, TextInput, View, Image } from 'react-native';
 import tw from 'tailwind-react-native-classnames';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import MapView, { Callout, Marker } from 'react-native-maps';
+import PropTypes from 'prop-types';
+import isEqual from 'lodash.isequal';
 import { useAuth } from '../navigations/AuthContext';
 import * as Location from 'expo-location';
-//import MapViewDirections from 'react-native-maps-directions';
+import MapViewDirections from 'react-native-maps-directions';
 
 //import MapViewDirections from '../map/MapViewDirections';
 
@@ -13,8 +15,182 @@ import * as Location from 'expo-location';
 import { Dimensions } from 'react-native';
 //import { set } from 'immer/dist/internal';
 const { height, width } = Dimensions.get('window');
+const WAYPOINT_LIMIT = 10;
+
 
 const Map = () => {
+
+  /*constructor(props) {
+		super(props);
+
+		this.state = {
+			coordinates: null,
+			distance: null,
+			duration: null,
+		};
+	}
+
+  decode(t) {
+		console.log("decode");
+		let points = [];
+		for (let step of t) {
+			let encoded = step.polyline.points;
+			let index = 0, len = encoded.length;
+			let lat = 0, lng = 0;
+			while (index < len) {
+				let b, shift = 0, result = 0;
+				do {
+					b = encoded.charAt(index++).charCodeAt(0) - 63;
+					result |= (b & 0x1f) << shift;
+					shift += 5;
+				} while (b >= 0x20);
+
+				let dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+				lat += dlat;
+				shift = 0;
+				result = 0;
+				do {
+					b = encoded.charAt(index++).charCodeAt(0) - 63;
+					result |= (b & 0x1f) << shift;
+					shift += 5;
+				} while (b >= 0x20);
+				let dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+				lng += dlng;
+
+				points.push({ latitude: (lat / 1E5), longitude: (lng / 1E5) });
+			}
+		}
+		return points;
+	}*/
+
+  /*let request = new XMLHttpRequest();
+
+    request.open('POST', "https://api.openrouteservice.org/v2/directions/driving-car/json");
+
+    request.setRequestHeader('Accept', 'application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8');
+    request.setRequestHeader('Content-Type', 'application/json');
+    request.setRequestHeader('Authorization', '5b3ce3597851110001cf62482663b0bbdc844998bea788272def8559');
+
+    var jsonObject; 
+
+    request.onreadystatechange = function () {
+        if (this.readyState === 4) {
+            console.log('Status:', this.status);
+            console.log('Headers:', this.getAllResponseHeaders());
+            console.log('Body:', this.responseText);
+            this.jsonObject = this.responseText;
+
+            const routes = [];
+            const [data , setData] = useState({
+              coordinates: null,
+              distance: null,
+              duration: null,
+          });
+
+          const componentDidMount = () =>{
+            console.log("componentDidMount");
+            this.fetchAndRenderRoute(this.props);
+          }
+
+          const componentDidUpdate = (prevProps) => {
+            console.log("componentDidUpdate");
+            if (!isEqual(prevProps.origin, this.props.origin) || !isEqual(prevProps.destination, this.props.destination) || !isEqual(prevProps.waypoints, this.props.waypoints) || !isEqual(prevProps.mode, this.props.mode) || !isEqual(prevProps.precision, this.props.precision) || !isEqual(prevProps.splitWaypoints, this.props.splitWaypoints)) {
+              if (this.props.resetOnChange === false) {
+                this.fetchAndRenderRoute(this.props);
+              } else {
+                this.resetState(() => {
+                  this.fetchAndRenderRoute(this.props);
+                });
+              }
+            }
+          }
+        
+          const resetState = (cb = null) => {
+            this.setState({
+              coordinates: null,
+              distance: null,
+              duration: null,
+            }, cb);
+          }
+
+            const decode = (t) => {
+              console.log("decode");
+              let points = [];
+              for (let step of t) {
+                let encoded = step.polyline.points;
+                let index = 0, len = encoded.length;
+                let lat = 0, lng = 0;
+                while (index < len) {
+                  let b, shift = 0, result = 0;
+                  do {
+                    b = encoded.charAt(index++).charCodeAt(0) - 63;
+                    result |= (b & 0x1f) << shift;
+                    shift += 5;
+                  } while (b >= 0x20);
+          
+                  let dlat = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+                  lat += dlat;
+                  shift = 0;
+                  result = 0;
+                  do {
+                    b = encoded.charAt(index++).charCodeAt(0) - 63;
+                    result |= (b & 0x1f) << shift;
+                    shift += 5;
+                  } while (b >= 0x20);
+                  let dlng = ((result & 1) != 0 ? ~(result >> 1) : (result >> 1));
+                  lng += dlng;
+          
+                  points.push({ latitude: (lat / 1E5), longitude: (lng / 1E5) });
+                }
+              }
+              return points;
+            }
+
+            var json = JSON.parse(this.responseText);
+            if (json.status !== 'OK') {
+              const errorMessage = json.error_message || json.status || 'Unknown error';
+              return Promise.reject(errorMessage);
+            }
+      
+            if (json.routes.length) {
+      
+              const route = json.routes[0];
+      
+              return Promise.resolve({
+                distance: route.legs.reduce((carry, curr) => {
+                  return carry + curr.distance.value;
+                }, 0) / 1000,
+                duration: route.legs.reduce((carry, curr) => {
+                  return carry + (curr.duration_in_traffic ? curr.duration_in_traffic.value : curr.duration.value);
+                }, 0) / 60,
+                coordinates: (
+                  (precision === 'low') ?
+                    this.decode([{polyline: route.overview_polyline}]) :
+                    route.legs.reduce((carry, curr) => {
+                      return [
+                        ...carry,
+                        ...this.decode(curr.steps),
+                      ];
+                    }, [])
+                ),
+                fare: route.fare,
+                waypointOrder: route.waypoint_order,
+                legs: route.legs,
+              });
+      
+            } else {
+              return Promise.reject();
+            }
+
+            console.log("121423JSON_OBJECT-----------------------------");
+            if(typeof jsonObject === 'string') console.log("STRINGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG");
+        }
+    };
+
+    const body = '{"coordinates":[[8.681495,49.41461],[8.686507,49.41943],[8.687872,49.420318]]}';
+
+    request.send(body);*/
+
   const origin = { latitude: 16.847350827401808, longitude: 74.59880747474361 };
   const destination = { latitude: 16.845574393214125, longitude: 74.6036139934753 };
   const LATITUDE_DELTA = 0.12;
@@ -59,14 +235,14 @@ const Map = () => {
           longitudeDelta: LONGITUDE_DELTA,
         }}
       >
-        {/*<MapViewDirections
+        <MapViewDirections
             origin={origin}
             destination={destination}
             apikey={OPEN_ROUTE_SERVICE_APIKEY}
             strokeWidth={3}
             strokeColor="hotpink"
 
-          />*/}
+          />
         <Marker
           coordinate={{ latitude: currLat, longitude: currLng }}
           title={currentUser.displayName}
